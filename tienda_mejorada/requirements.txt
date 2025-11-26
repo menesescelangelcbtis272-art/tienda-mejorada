@@ -1,0 +1,7 @@
+Flask 3.0.1
+flask-login
+pymongo
+python-dotenv
+werkzeug
+pillow
+bson

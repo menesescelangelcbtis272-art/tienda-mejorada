@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Categorías{% endblock %}
+{% block page_title %}Categorías{% endblock %}
+{% block content %}
+<div class="form-card">
+  <h3>Categorías</h3>
+  <a class="top-action" href="{{ url_for('category_new') }}">Agregar categoría</a>
+  <div style="height:12px"></div>
+  <table style="width:100%;">
+    <thead><tr><th>Nombre</th><th>Subcategoria</th><th>Productos</th><th></th></tr></thead>
+    <tbody>
+      {% for c in categories %}
+      <tr>
+        <td>{{ c.name }}</td><td>{{ c.subcategory or '' }}</td><td>{{ c.count or 0 }}</td>
+        <td>
+          <a href="{{ url_for('category_edit', id=c._id) }}" class="menu-item">Editar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

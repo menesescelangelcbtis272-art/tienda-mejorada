@@ -1,0 +1,9 @@
+/* fallback */
+body{font-family:Inter,system-ui,sans-serif}
+.summary-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+body {
+    background: #f6f7fb;
+}
