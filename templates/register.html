@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Registro{% endblock %}
+{% block page_title %}Registro{% endblock %}
+{% block content %}
+<div style="max-width:480px;margin:40px auto">
+  <div class="form-card">
+    <h3>Crear cuenta</h3>
+    <form method="post">
+      <label>Usuario</label>
+      <input type="text" name="username" required>
+      <label>Contraseña</label>
+      <input type="password" name="password" required>
+      <label>Rol</label>
+      <select name="role">
+        <option value="user">Usuario</option>
+        <option value="admin">Administrador</option>
+      </select>
+      <div class="form-actions">
+        <button class="top-action" type="submit">Registrar</button>
+        <a class="menu-item" href="{{ url_for('login') }}">Ir a login</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

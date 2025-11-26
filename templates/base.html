@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{% block title %}Tienda{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">TIENDA</div>
+        <div class="subtitle">Inventario</div>
+      </div>
+      <nav class="menu">
+        <a href="{{ url_for('dashboard') }}" class="menu-item">Dashboard</a>
+        <a href="{{ url_for('inventory') }}" class="menu-item">Inventario</a>
+        <a href="{{ url_for('categories') }}" class="menu-item">Categorías</a>
+      </nav>
+      <div class="sidebar-footer">
+        {% if current_user.is_authenticated %}
+        <div class="user-info">{{ current_user.username }}</div>
+        <a href="{{ url_for('logout') }}" class="menu-item small">Cerrar sesión</a>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="menu-item small">Iniciar sesión</a>
+        {% endif %}
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div class="top-left">
+          <h1 class="page-title">{% block page_title %}{% endblock %}</h1>
+        </div>
+        <div class="top-right">
+          <a href="{{ url_for('product_new') }}" class="top-action">Agregar producto</a>
+        </div>
+      </header>
+      <section class="content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-area">
+              {% for category, msg in messages %}
+                <div class="flash {{ category }}">{{ msg }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+      </section>
+    </main>
+  </div>
+</body>
+</html>
