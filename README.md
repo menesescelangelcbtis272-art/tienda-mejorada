@@ -1,1 +1,0 @@
-# Tienda Mejorada\n\nSet SECRET_KEY and MONGO_URI in .env if you want Atlas.\nRun: python app.py\n
